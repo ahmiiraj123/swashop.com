@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | SWA Meat & Fish Market</title>
+  <meta name="description" content="Browse products at SWA Meat & Fish Market in Barking. Fresh meat, frozen fish, family packs, and special items." />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06111f;
+      --bg2:#0b1730;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.12);
+      --text:#eef4ff;
+      --muted:rgba(238,244,255,.72);
+      --line:rgba(255,255,255,.14);
+      --accent:#7cdb9a;
+      --accent2:#53b7ff;
+      --accent3:#ffb86b;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --radius2:32px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(83,183,255,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,219,154,.16), transparent 26%),
+        radial-gradient(circle at center bottom, rgba(255,184,107,.11), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, #07101d 45%, #050a13 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin-inline:auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0;
+      position:relative;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(124,219,154,.20), rgba(83,183,255,.20));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+      flex:0 0 auto;
+      font-size:1.15rem;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.06rem;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.7rem;
+    }
+
+    .menu-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      margin-left:auto;
+      transition:.25s ease;
+    }
+
+    .menu-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
+    }
+
+    .menu-icon{
+      width:18px;
+      height:12px;
+      position:relative;
+      display:inline-block;
+    }
+
+    .menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      border-radius:999px;
+      background:currentColor;
+      transition:.25s ease;
+    }
+
+    .menu-icon span:nth-child(1){top:0}
+    .menu-icon span:nth-child(2){top:5px}
+    .menu-icon span:nth-child(3){top:10px}
+
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1){
+      top:5px;
+      transform:rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3){
+      top:5px;
+      transform:rotate(-45deg);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex:1 1 auto;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:var(--muted);
+      transition:.25s ease;
+      font-size:.92rem;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      position:relative;
+      padding:76px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:.92rem;
+    }
+
+    .dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(124,219,154,.12);
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.04;
+      letter-spacing:-.04em;
+    }
+
+    h2 span{
+      background:linear-gradient(135deg, #ffffff, #8ce5b6 50%, #76c2ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      margin:16px 0 0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.03rem;
+      max-width:62ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+      letter-spacing:.01em;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{transform:translateY(-2px) scale(1.01)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#04111f;}
+    .btn-secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); color:var(--text); backdrop-filter:blur(10px);}
+    .btn-dark{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.08); color:var(--text);}
+
+    .hero-card{
+      position:relative;
+      min-height:520px;
+      border-radius:var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,219,154,.22), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(83,183,255,.20), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(255,184,107,.16), transparent 25%),
+        rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+      transition:transform .15s ease;
+    }
+
+    .hero-card::before,
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(30px);
+      opacity:.8;
+      animation:float 10s ease-in-out infinite;
+    }
+
+    .hero-card::before{
+      width:220px;
+      height:220px;
+      left:-40px;
+      top:30px;
+      background:rgba(124,219,154,.18);
+    }
+
+    .hero-card::after{
+      width:240px;
+      height:240px;
+      right:-30px;
+      bottom:20px;
+      background:rgba(83,183,255,.16);
+      animation-delay:-4s;
+    }
+
+    .product-window{
+      position:absolute;
+      inset:18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.06)),
+        radial-gradient(circle at top, rgba(255,255,255,.12), transparent 35%);
+      backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
+
+    .window-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .window-dots{display:flex; gap:8px}
+    .window-dots span{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:rgba(255,255,255,.32);
+    }
+
+    .window-title{
+      color:rgba(255,255,255,.78);
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .shop-status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:.9rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .status-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#ef4444;
+      box-shadow:0 0 0 6px rgba(239,68,68,.12);
+    }
+
+    .hero-illustration{
+      position:absolute;
+      inset:92px 18px 18px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border-radius:22px;
+    }
+
+    .hero-illustration img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:22px;
+      filter:saturate(1.05) contrast(1.02);
+      animation:gentle 6s ease-in-out infinite;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, transparent, rgba(2,7,15,.72));
+      padding:22px 22px 18px;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:end;
+      pointer-events:none;
+    }
+
+    .hero-overlay strong{display:block; font-size:1.05rem}
+    .hero-overlay span{display:block; color:rgba(238,244,255,.74); font-size:.92rem; margin-top:4px}
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .summary{
+      padding:14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .summary strong{display:block; font-size:1.1rem}
+    .summary span{display:block; margin-top:4px; color:var(--muted); font-size:.92rem}
+
+    .search-panel{
+      display:grid;
+      gap:14px;
+    }
+
+    .searchbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+
+    .searchbar input{
+      flex:1 1 240px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:14px 16px;
+      outline:none;
+    }
+
+    .searchbar input:focus{
+      border-color:rgba(124,219,154,.45);
+      box-shadow:0 0 0 3px rgba(124,219,154,.10);
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .filter-btn{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.2s ease;
+      font-weight:600;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover{
+      background:linear-gradient(135deg, rgba(124,219,154,.22), rgba(83,183,255,.18));
+      border-color:rgba(124,219,154,.35);
+      transform:translateY(-1px);
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .info-card{
+      padding:20px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h4{margin:0 0 8px; font-size:1.05rem}
+    .info-card p{margin:0; color:var(--muted); line-height:1.7}
+
+    section{padding:18px 0 74px}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:end;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size:clamp(1.4rem, 2.4vw, 2.1rem);
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      margin:0;
+      max-width:60ch;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .product-card{
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      transition:.25s ease;
+    }
+
+    .product-card:hover{transform:translateY(-4px)}
+
+    .product-image{
+      height:220px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .product-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .5s ease;
+    }
+
+    .product-card:hover .product-image img{transform:scale(1.05)}
+
+    .badge{
+      position:absolute;
+      left:14px;
+      top:14px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(6,13,24,.72);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(12px);
+      font-size:.85rem;
+    }
+
+    .product-body{
+      padding:18px;
+      display:grid;
+      gap:12px;
+    }
+
+    .product-body h4{
+      margin:0;
+      font-size:1.15rem;
+    }
+
+    .product-body p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    .product-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-top:4px;
+      color:rgba(238,244,255,.78);
+      font-size:.92rem;
+    }
+
+    .price{
+      font-weight:800;
+      color:#ffffff;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:2px;
+    }
+
+    .mini-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:700;
+      font-size:.92rem;
+      transition:.2s ease;
+    }
+
+    .mini-btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.08);
+    }
+
+    .empty{
+      padding:24px;
+      border-radius:24px;
+      border:1px dashed rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      line-height:1.75;
+      display:none;
+    }
+
+    .footer{
+      padding:28px 0 48px;
+      color:rgba(238,244,255,.68);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0px)}
+      50%{transform:translateY(-12px)}
+    }
+
+    @keyframes gentle{
+      0%,100%{transform:translateY(0px) rotate(0deg)}
+      50%{transform:translateY(-10px) rotate(-1deg)}
+    }
+
+    @media (max-width: 1080px){
+      .products-grid{grid-template-columns:repeat(2, 1fr)}
+      .info-grid,.summary-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero{padding-top:52px}
+      .hero-card{min-height:430px}
+    }
+
+    @media (max-width: 760px){
+      .menu-toggle{display:inline-flex;}
+      .nav{
+        display:none;
+        width:100%;
+        justify-content:flex-start;
+        padding:8px 0 2px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav.open{display:flex;}
+      .nav a{
+        width:100%;
+        padding:12px 14px;
+        background:rgba(255,255,255,.04);
+      }
+      .topbar-inner{
+        padding:14px 0 12px;
+      }
+      .hero-card{min-height:390px}
+      .products-grid,.info-grid,.summary-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 520px){
+      .container{width:min(var(--max), calc(100% - 22px));}
+      section{padding:62px 0}
+      .hero{padding:34px 0 22px}
+      .hero-actions{gap:10px}
+      .btn{width:100%}
+      .hero-overlay{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .searchbar input{
+        flex-basis:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🛒</div>
+        <div>
+          <h1>SWA Meat & Fish Market</h1>
+          <p>Browse available products</p>
+        </div>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        Menu
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="#products">Products</a>
+        <a href="#info">Shop info</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="panel reveal">
+        <div class="eyebrow"><span class="dot"></span> Products page ready for your full catalog</div>
+        <h2>Our <span>products</span></h2>
+        <p>
+          This page is set up so you can list every product you sell in one place.
+          It includes search, category filters, and product cards for fresh meat, frozen fish, family packs, and special items.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:07852333142">Call Shop</a>
+          <a class="btn btn-secondary" href="reviews.html">Read Reviews</a>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary">
+            <strong id="productCount">0</strong>
+            <span>Total products</span>
+          </div>
+          <div class="summary">
+            <strong id="meatCount">0</strong>
+            <span>Fresh meat items</span>
+          </div>
+          <div class="summary">
+            <strong id="fishCount">0</strong>
+            <span>Frozen fish items</span>
+          </div>
+          <div class="summary">
+            <strong id="packCount">0</strong>
+            <span>Family packs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel search-panel reveal">
+        <div>
+          <h3 style="margin:0 0 6px; font-size:1.3rem;">Find a product</h3>
+          <p style="margin:0; color:var(--muted); line-height:1.7;">
+            Search by name or use the category buttons to narrow down the list.
+          </p>
+        </div>
+
+        <div class="searchbar">
+          <input id="searchInput" type="search" placeholder="Search products..." />
+        </div>
+
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="meat" type="button">Fresh Meat</button>
+          <button class="filter-btn" data-filter="fish" type="button">Frozen Fish</button>
+          <button class="filter-btn" data-filter="pack" type="button">Family Packs</button>
+          <button class="filter-btn" data-filter="special" type="button">Special Offers</button>
+        </div>
+
+        <div class="info-grid" style="margin-top:4px;">
+          <div class="info-card">
+            <h4>Ready for editing</h4>
+            <p>Replace the sample items with your actual products whenever you are ready.</p>
+          </div>
+          <div class="info-card">
+            <h4>Easy to expand</h4>
+            <p>Add more product cards or connect this list to a database later.</p>
+          </div>
+          <div class="info-card">
+            <h4>Works on mobile</h4>
+            <p>Cards stack properly on smaller screens so browsing stays simple.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="products">
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Available products</h3>
+            <p>Sample products are included below. You can replace the text, images, and prices with your real stock later.</p>
+          </div>
+          <a class="btn btn-primary" href="reviews.html" style="padding:12px 16px;">Add Review</a>
+        </div>
+
+        <div id="productsGrid" class="products-grid"></div>
+        <div id="emptyState" class="empty reveal" style="margin-top:18px;">
+          No products match your search or selected category.
+        </div>
+      </div>
+    </section>
+
+    <section id="info">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Shop information</h3>
+            <p>Keep this section updated with your delivery rules, collection times, and seasonal offers.</p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <h4>Fresh meat counter</h4>
+            <p>Customers can ask for daily meat cuts, special preparation, and bulk quantities for home use.</p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Frozen fish range</h4>
+            <p>Frozen fish is available for families who want seafood that can be stored and cooked later.</p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Bulk orders</h4>
+            <p>Large orders can be prepared in advance. Add your own contact instructions and order notes here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 SWA Meat & Fish Market</div>
+      <div><a href="index.html">Home</a> · <a href="reviews.html">Reviews</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      {
+        name: "Fresh Chicken Cut Pieces",
+        category: "meat",
+        badge: "Fresh Meat",
+        price: "From £4.99",
+        unit: "Per kg",
+        description: "Popular for family meals and everyday cooking. Ask in store for your preferred cut.",
+        image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Fresh Lamb Pieces",
+        category: "meat",
+        badge: "Fresh Meat",
+        price: "From £9.99",
+        unit: "Per kg",
+        description: "A customer favourite for curries, roasting, and special weekend meals.",
+        image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Beef Mince",
+        category: "meat",
+        badge: "Fresh Meat",
+        price: "From £7.49",
+        unit: "Per kg",
+        description: "Great for burgers, pasta, keema, and quick home meals.",
+        image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Frozen Salmon Fillets",
+        category: "fish",
+        badge: "Frozen Fish",
+        price: "From £8.99",
+        unit: "Pack",
+        description: "Frozen fish option for customers who want seafood ready for later cooking.",
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Frozen Sea Bream",
+        category: "fish",
+        badge: "Frozen Fish",
+        price: "From £6.99",
+        unit: "Each",
+        description: "Suitable for grilling, oven cooking, and home-style seafood dishes.",
+        image: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Frozen Fish Mix Pack",
+        category: "fish",
+        badge: "Frozen Fish",
+        price: "From £10.99",
+        unit: "Pack",
+        description: "A mixed frozen fish option for families who like variety.",
+        image: "https://images.unsplash.com/photo-1499124258414-2ef7dcf4a12b?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Family Meat Pack",
+        category: "pack",
+        badge: "Family Pack",
+        price: "Ask in store",
+        unit: "Bundle",
+        description: "A convenient pack for weekly shopping and larger households.",
+        image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Mixed BBQ Pack",
+        category: "pack",
+        badge: "Family Pack",
+        price: "Seasonal",
+        unit: "Bundle",
+        description: "Ideal for weekends, family gatherings, and summer grilling.",
+        image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
+      },
+      {
+        name: "Special Offer of the Week",
+        category: "special",
+        badge: "Special Offer",
+        price: "Limited",
+        unit: "Weekly",
+        description: "Use this area for your weekly deal, discount, or featured item.",
+        image: "https://images.unsplash.com/photo-1467453678174-768ec283a940?auto=format&fit=crop&w=1200&q=80"
+      }
+    ];
+
+    const grid = document.getElementById('productsGrid');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    const productCountEl = document.getElementById('productCount');
+    const meatCountEl = document.getElementById('meatCount');
+    const fishCountEl = document.getElementById('fishCount');
+    const packCountEl = document.getElementById('packCount');
+
+    let activeFilter = 'all';
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function updateStats() {
+      productCountEl.textContent = products.length;
+      meatCountEl.textContent = products.filter(p => p.category === 'meat').length;
+      fishCountEl.textContent = products.filter(p => p.category === 'fish').length;
+      packCountEl.textContent = products.filter(p => p.category === 'pack').length;
+    }
+
+    function escapeHtml(str = '') {
+      return String(str)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function renderProducts() {
+      const query = searchInput.value.trim().toLowerCase();
+
+      const filtered = products.filter(product => {
+        const matchesFilter = activeFilter === 'all' || product.category === activeFilter;
+        const matchesSearch =
+          product.name.toLowerCase().includes(query) ||
+          product.description.toLowerCase().includes(query) ||
+          product.badge.toLowerCase().includes(query);
+
+        return matchesFilter && matchesSearch;
+      });
+
+      grid.innerHTML = '';
+
+      if (!filtered.length) {
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      filtered.forEach(product => {
+        const card = document.createElement('article');
+        card.className = 'product-card reveal show';
+
+        card.innerHTML = `
+          <div class="product-image">
+            <img src="${product.image}" alt="${escapeHtml(product.name)}" />
+            <div class="badge">${escapeHtml(product.badge)}</div>
+          </div>
+          <div class="product-body">
+            <h4>${escapeHtml(product.name)}</h4>
+            <p>${escapeHtml(product.description)}</p>
+            <div class="product-meta">
+              <span>${escapeHtml(product.unit)}</span>
+              <span class="price">${escapeHtml(product.price)}</span>
+            </div>
+            <div class="card-actions">
+              <a class="mini-btn" href="tel:07852333142">Call to Order</a>
+              <a class="mini-btn" href="index.html#hours">Visit Shop</a>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      document.querySelectorAll('#productsGrid .reveal').forEach(el => observer.observe(el));
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        activeFilter = button.dataset.filter;
+        renderProducts();
+      });
+    });
+
+    searchInput.addEventListener('input', renderProducts);
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 760) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    updateStats();
+    renderProducts();
+  </script>
+</body>
+</html>

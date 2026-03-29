@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave a Review | SWA Meat & Fish Market</title>
+  <meta name="description" content="Leave a review for SWA Meat & Fish Market in Barking. Share your rating, comment, and experience." />
+  <meta name="theme-color" content="#07111f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06111f;
+      --text:#eef4ff;
+      --muted:rgba(238,244,255,.72);
+      --line:rgba(255,255,255,.12);
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.10);
+      --accent:#7cdb9a;
+      --accent2:#53b7ff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(83,183,255,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,219,154,.16), transparent 26%),
+        linear-gradient(180deg, var(--bg) 0%, #07101d 45%, #050a13 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin-inline:auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(124,219,154,.20), rgba(83,183,255,.20));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+      flex:0 0 auto;
+      font-size:1.15rem;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1rem;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .menu-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      margin-left:auto;
+      transition:.25s ease;
+    }
+
+    .menu-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
+    }
+
+    .menu-icon{
+      width:18px;
+      height:12px;
+      position:relative;
+      display:inline-block;
+    }
+
+    .menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      border-radius:999px;
+      background:currentColor;
+      transition:.25s ease;
+    }
+
+    .menu-icon span:nth-child(1){top:0}
+    .menu-icon span:nth-child(2){top:5px}
+    .menu-icon span:nth-child(3){top:10px}
+
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1){
+      top:5px;
+      transform:rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3){
+      top:5px;
+      transform:rotate(-45deg);
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+      flex:1 1 auto;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:var(--muted);
+      transition:.25s ease;
+      font-size:.92rem;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:64px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:.92rem;
+    }
+
+    .dot{width:9px;height:9px;border-radius:50%; background:var(--accent)}
+
+    h2{
+      margin:0;
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.04;
+      letter-spacing:-.04em;
+    }
+
+    h2 span{
+      background:linear-gradient(135deg, #ffffff, #8ce5b6 50%, #76c2ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      margin:16px 0 0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.03rem;
+      max-width:62ch;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .stat{
+      padding:16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong{display:block; font-size:1.1rem}
+    .stat span{display:block; margin-top:4px; color:var(--muted); font-size:.92rem}
+
+    .card-title{
+      margin:0 0 6px;
+      font-size:1.3rem;
+    }
+
+    .card-subtitle{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .rating-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .rating-option{
+      position:relative;
+      flex:1 1 calc(20% - 10px);
+      min-width:56px;
+    }
+
+    .rating-option input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .rating-option label{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      cursor:pointer;
+      transition:.2s ease;
+      font-weight:700;
+    }
+
+    .rating-option input:checked + label{
+      background:linear-gradient(135deg, rgba(124,219,154,.22), rgba(83,183,255,.18));
+      border-color:rgba(124,219,154,.35);
+      transform:translateY(-1px);
+    }
+
+    .field-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .field label{
+      font-size:.92rem;
+      color:rgba(238,244,255,.86);
+      font-weight:600;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:14px 16px;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field textarea{min-height:140px; resize:vertical}
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:rgba(124,219,154,.45);
+      box-shadow:0 0 0 3px rgba(124,219,154,.10);
+    }
+
+    .checkline{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:14px 0 18px;
+      color:rgba(238,244,255,.84);
+      line-height:1.6;
+      font-size:.94rem;
+    }
+
+    .checkline input{margin-top:4px}
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+      box-shadow:var(--shadow);
+      width:100%;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#04111f;}
+    .btn-secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); color:var(--text)}
+
+    .summary-box{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .summary{
+      padding:16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .summary strong{display:block; font-size:1.05rem}
+    .summary span{display:block; margin-top:4px; color:var(--muted)}
+
+    section{padding:24px 0 72px}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:end;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size:clamp(1.4rem, 2.4vw, 2.1rem);
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      margin:0;
+      max-width:60ch;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .review-card{
+      padding:22px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .review-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .review-name{font-weight:700}
+    .stars{color:#ffd56a; letter-spacing:1px; white-space:nowrap}
+
+    .review-meta{
+      margin-top:10px;
+      color:rgba(238,244,255,.58);
+      font-size:.88rem;
+      line-height:1.6;
+    }
+
+    .review-comment{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .empty-state{
+      padding:28px;
+      border-radius:24px;
+      border:1px dashed rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .footer{
+      padding:28px 0 48px;
+      color:rgba(238,244,255,.68);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .show{
+      opacity:1 !important;
+      transform:none !important;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(16px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 720px){
+      .menu-toggle{display:inline-flex;}
+      .nav{
+        display:none;
+        width:100%;
+        justify-content:flex-start;
+        padding:8px 0 2px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav.open{display:flex;}
+      .nav a{
+        width:100%;
+        padding:12px 14px;
+        background:rgba(255,255,255,.04);
+      }
+      .field-grid,
+      .reviews-grid,
+      .stats{
+        grid-template-columns:1fr;
+      }
+      .rating-option{flex:1 1 calc(50% - 10px)}
+      .panel{padding:22px}
+    }
+
+    @media (max-width: 520px){
+      .container{width:min(var(--max), calc(100% - 20px));}
+      .hero{padding-top:38px}
+      .rating-option{flex:1 1 100%}
+      .btn{padding:15px 16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🛒</div>
+        <div>
+          <h1>SWA Meat & Fish Market</h1>
+          <p>Leave your feedback</p>
+        </div>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        Menu
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="#form">Write a review</a>
+        <a href="#reviews">Recent reviews</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="panel reveal">
+        <div class="eyebrow"><span class="dot"></span> Your feedback helps other customers</div>
+        <h2>Share your experience with <span>SWA Meat & Fish Market</span></h2>
+        <p>
+          Tell us how your visit went, rate the service, and leave a comment about the meat, frozen fish, and shop experience.
+          You can also mention whether the staff were helpful, whether your order was ready on time, and if you would recommend us.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong id="avgRating">0.0 / 5</strong>
+            <span>Average rating</span>
+          </div>
+          <div class="stat">
+            <strong id="totalReviews">0</strong>
+            <span>Total reviews</span>
+          </div>
+          <div class="stat">
+            <strong>Fast feedback</strong>
+            <span>Simple form to complete</span>
+          </div>
+          <div class="stat">
+            <strong>Stored locally</strong>
+            <span>Works immediately for testing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal" id="form">
+        <h3 class="card-title">Write a review</h3>
+        <p class="card-subtitle">Fill in the form below and your review will appear on this page after submission.</p>
+
+        <form id="reviewForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="field">
+              <label for="contact">Phone or email</label>
+              <input id="contact" name="contact" type="text" placeholder="Optional contact details" />
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="visitType">Visit type</label>
+              <select id="visitType" name="visitType" required>
+                <option value="">Choose one</option>
+                <option>Walk-in</option>
+                <option>Phone order</option>
+                <option>Bulk order</option>
+                <option>Delivery</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="visitDate">Visit date</label>
+              <input id="visitDate" name="visitDate" type="date" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Your rating</label>
+            <div class="rating-row" role="radiogroup" aria-label="Rating">
+              <div class="rating-option">
+                <input type="radio" id="r5" name="rating" value="5" required />
+                <label for="r5">5 ★</label>
+              </div>
+              <div class="rating-option">
+                <input type="radio" id="r4" name="rating" value="4" />
+                <label for="r4">4 ★</label>
+              </div>
+              <div class="rating-option">
+                <input type="radio" id="r3" name="rating" value="3" />
+                <label for="r3">3 ★</label>
+              </div>
+              <div class="rating-option">
+                <input type="radio" id="r2" name="rating" value="2" />
+                <label for="r2">2 ★</label>
+              </div>
+              <div class="rating-option">
+                <input type="radio" id="r1" name="rating" value="1" />
+                <label for="r1">1 ★</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment" placeholder="Tell us what you liked, what can be improved, and what you bought." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="suggestion">What did you buy?</label>
+            <input id="suggestion" name="suggestion" type="text" placeholder="Example: lamb, chicken, frozen fish" />
+          </div>
+
+          <div class="checkline">
+            <input id="consent" type="checkbox" required />
+            <label for="consent">I agree that this review may be displayed on the website.</label>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Submit review</button>
+        </form>
+
+        <div class="summary-box">
+          <div class="summary">
+            <strong>What to include</strong>
+            <span>Service, cleanliness, product quality, waiting time, and whether you would recommend the shop.</span>
+          </div>
+          <div class="summary">
+            <strong>Good for local trust</strong>
+            <span>Short, honest reviews help new customers feel confident before they visit.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Recent reviews</h3>
+            <p>Your submitted reviews will appear here. New reviews are kept in the browser for demo use.</p>
+          </div>
+        </div>
+
+        <div id="reviewsGrid" class="reviews-grid"></div>
+        <div id="emptyState" class="empty-state reveal" style="display:none; margin-top:18px;">
+          No reviews yet. Be the first person to share feedback about SWA Meat & Fish Market.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 SWA Meat & Fish Market</div>
+      <div><a href="index.html">Back to home</a> · <a href="products.html">View products</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'swa_reviews';
+
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    const emptyState = document.getElementById('emptyState');
+    const avgRatingEl = document.getElementById('avgRating');
+    const totalReviewsEl = document.getElementById('totalReviews');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    function loadReviews() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+    }
+
+    function starsMarkup(rating) {
+      const full = '★'.repeat(rating);
+      const empty = '☆'.repeat(5 - rating);
+      return `${full}${empty}`;
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return 'Visit date not added';
+      const d = new Date(dateStr + 'T00:00:00');
+      if (Number.isNaN(d.getTime())) return 'Visit date not added';
+      return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function escapeHtml(str = '') {
+      return String(str)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function renderReviews() {
+      const reviews = loadReviews().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      reviewsGrid.innerHTML = '';
+
+      if (!reviews.length) {
+        emptyState.style.display = 'block';
+        avgRatingEl.textContent = '0.0 / 5';
+        totalReviewsEl.textContent = '0';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      totalReviewsEl.textContent = String(reviews.length);
+
+      const avg = reviews.reduce((sum, r) => sum + Number(r.rating || 0), 0) / reviews.length;
+      avgRatingEl.textContent = `${avg.toFixed(1)} / 5`;
+
+      reviews.forEach(review => {
+        const card = document.createElement('article');
+        card.className = 'review-card reveal show';
+
+        card.innerHTML = `
+          <div class="review-top">
+            <div class="review-name">${escapeHtml(review.name)}</div>
+            <div class="stars">${starsMarkup(Number(review.rating))}</div>
+          </div>
+          <p class="review-comment">${escapeHtml(review.comment)}</p>
+          <div class="review-meta">
+            <div><strong>Visit type:</strong> ${escapeHtml(review.visitType)}</div>
+            <div><strong>Visited:</strong> ${escapeHtml(formatDate(review.visitDate))}</div>
+            ${review.contact ? `<div><strong>Contact:</strong> ${escapeHtml(review.contact)}</div>` : ''}
+            ${review.suggestion ? `<div><strong>Bought:</strong> ${escapeHtml(review.suggestion)}</div>` : ''}
+          </div>
+        `;
+        reviewsGrid.appendChild(card);
+      });
+
+      document.querySelectorAll('#reviewsGrid .reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(reviewForm);
+      const rating = Number(formData.get('rating'));
+
+      const review = {
+        name: String(formData.get('name') || '').trim(),
+        contact: String(formData.get('contact') || '').trim(),
+        visitType: String(formData.get('visitType') || '').trim(),
+        visitDate: String(formData.get('visitDate') || '').trim(),
+        rating,
+        comment: String(formData.get('comment') || '').trim(),
+        suggestion: String(formData.get('suggestion') || '').trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      if (!review.name || !review.visitType || !review.rating || !review.comment) {
+        alert('Please fill in the required fields.');
+        return;
+      }
+
+      const reviews = loadReviews();
+      reviews.unshift(review);
+      saveReviews(reviews);
+
+      reviewForm.reset();
+      renderReviews();
+      window.location.hash = '#reviews';
+      alert('Thank you. Your review has been added.');
+    });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 720) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    renderReviews();
+  </script>
+</body>
+</html>
