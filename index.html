@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWA Meat & Fish Market | Barking</title>
+  <meta name="description" content="SWA Meat & Fish Market in Barking offers fresh meat, frozen fish, custom cuts, bulk orders, and local collection." />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06111f;
+      --bg2:#0b1730;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.12);
+      --text:#eef4ff;
+      --muted:rgba(238,244,255,.72);
+      --line:rgba(255,255,255,.14);
+      --accent:#7cdb9a;
+      --accent2:#53b7ff;
+      --accent3:#ffb86b;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --radius2:32px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(83,183,255,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,219,154,.16), transparent 26%),
+        radial-gradient(circle at center bottom, rgba(255,184,107,.11), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, #07101d 45%, #050a13 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin-inline:auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0;
+      position:relative;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(124,219,154,.20), rgba(83,183,255,.20));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+      flex:0 0 auto;
+      font-size:1.15rem;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.06rem;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.7rem;
+    }
+
+    .menu-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      margin-left:auto;
+      transition:.25s ease;
+    }
+
+    .menu-toggle:hover{transform:translateY(-1px); background:rgba(255,255,255,.09)}
+    .menu-icon{
+      width:18px;
+      height:12px;
+      position:relative;
+      display:inline-block;
+    }
+    .menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      border-radius:999px;
+      background:currentColor;
+      transition:.25s ease;
+    }
+    .menu-icon span:nth-child(1){top:0}
+    .menu-icon span:nth-child(2){top:5px}
+    .menu-icon span:nth-child(3){top:10px}
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1){top:5px; transform:rotate(45deg)}
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2){opacity:0}
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3){top:5px; transform:rotate(-45deg)}
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex:1 1 auto;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:var(--muted);
+      transition:.25s ease;
+      font-size:.92rem;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      position:relative;
+      padding:46px 0 36px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:.92rem;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+    .dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(124,219,154,.12);
+    }
+    .hero h2{
+      margin:0;
+      font-size:clamp(2.3rem, 4.5vw, 4.9rem);
+      line-height:1.02;
+      letter-spacing:-.04em;
+      max-width:12ch;
+    }
+    .hero h2 span{
+      background:linear-gradient(135deg, #ffffff, #8ce5b6 50%, #76c2ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      margin:18px 0 0;
+      max-width:62ch;
+      color:var(--muted);
+      font-size:1.05rem;
+      line-height:1.7;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+      letter-spacing:.01em;
+      box-shadow:var(--shadow);
+    }
+    .btn:hover{transform:translateY(-2px) scale(1.01)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#04111f;}
+    .btn-secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); color:var(--text); backdrop-filter:blur(10px);}
+    .btn-dark{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.08); color:var(--text);}
+
+    .hero-card{
+      position:relative;
+      min-height:520px;
+      border-radius:var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,219,154,.22), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(83,183,255,.20), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(255,184,107,.16), transparent 25%),
+        rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+      transition:transform .15s ease;
+    }
+
+    .hero-card::before,
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(30px);
+      opacity:.8;
+      animation:float 10s ease-in-out infinite;
+    }
+
+    .hero-card::before{
+      width:220px;
+      height:220px;
+      left:-40px;
+      top:30px;
+      background:rgba(124,219,154,.18);
+    }
+    .hero-card::after{
+      width:240px;
+      height:240px;
+      right:-30px;
+      bottom:20px;
+      background:rgba(83,183,255,.16);
+      animation-delay:-4s;
+    }
+
+    .product-window{
+      position:absolute;
+      inset:18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.06)),
+        radial-gradient(circle at top, rgba(255,255,255,.12), transparent 35%);
+      backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
+
+    .window-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .window-dots{display:flex; gap:8px}
+    .window-dots span{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:rgba(255,255,255,.32);
+    }
+    .window-title{
+      color:rgba(255,255,255,.78);
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .shop-status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:.9rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .status-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:#ef4444;
+      box-shadow:0 0 0 6px rgba(239,68,68,.12);
+    }
+
+    .floating-stat{
+      position:absolute;
+      padding:14px 16px;
+      border-radius:20px;
+      background:rgba(6,13,24,.55);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      animation:float 7s ease-in-out infinite;
+    }
+    .floating-stat strong{display:block;font-size:1.05rem}
+    .floating-stat span{color:var(--muted);font-size:.85rem}
+    .fs1{left:22px;bottom:25px}
+    .fs2{right:22px;top:118px; animation-delay:-2.4s}
+    .fs3{right:60px;bottom:34px; animation-delay:-4.8s}
+
+    .hero-illustration{
+      position:absolute;
+      inset:92px 18px 18px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border-radius:22px;
+    }
+
+    .hero-illustration img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:22px;
+      filter:saturate(1.05) contrast(1.02);
+      animation:gentle 6s ease-in-out infinite;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, transparent, rgba(2,7,15,.72));
+      padding:22px 22px 18px;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:end;
+      pointer-events:none;
+    }
+
+    .hero-overlay strong{display:block; font-size:1.05rem}
+    .hero-overlay span{display:block; color:rgba(238,244,255,.74); font-size:.92rem; margin-top:4px}
+
+    .marquee{
+      margin:12px 0 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      overflow:hidden;
+    }
+
+    .marquee-track{
+      display:flex;
+      gap:42px;
+      white-space:nowrap;
+      padding:14px 0;
+      width:max-content;
+      animation:scroll 24s linear infinite;
+      color:rgba(238,244,255,.82);
+      font-size:.92rem;
+    }
+    .marquee-track span{display:inline-flex; align-items:center; gap:10px;}
+    .marquee-track b{color:var(--accent); font-weight:700;}
+
+    section{padding:76px 0}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:end;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+    .section-head h3{margin:0; font-size:clamp(1.5rem, 2.5vw, 2.4rem); letter-spacing:-.03em;}
+    .section-head p{margin:0; max-width:58ch; color:var(--muted); line-height:1.7;}
+
+    .grid-3{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;}
+    .card{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+      padding:22px;
+      backdrop-filter:blur(16px);
+      position:relative;
+      overflow:hidden;
+      transition:.28s ease;
+    }
+    .card:hover{transform:translateY(-6px); border-color:rgba(255,255,255,.18);}
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:auto -40px -50px auto;
+      width:140px;
+      height:140px;
+      background:radial-gradient(circle, rgba(124,219,154,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .card-icon{
+      width:52px;
+      height:52px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
+      margin-bottom:16px;
+      font-size:1.25rem;
+    }
+    .card h4{margin:0 0 10px; font-size:1.18rem;}
+    .card p{margin:0; color:var(--muted); line-height:1.75; font-size:.98rem;}
+
+    .spotlight{display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:stretch;}
+    .highlight{
+      border-radius:var(--radius2);
+      padding:26px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(124,219,154,.14), rgba(83,183,255,.10)), rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .highlight h4{margin:0 0 10px; font-size:1.3rem}
+    .highlight p{margin:0;color:var(--muted);line-height:1.75}
+    .bullet-list{
+      margin:18px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+    .bullet-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      color:rgba(238,244,255,.88);
+    }
+    .check{
+      width:22px;
+      height:22px;
+      flex:0 0 auto;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(124,219,154,.18);
+      border:1px solid rgba(124,219,154,.28);
+      margin-top:2px;
+      color:var(--accent);
+      font-weight:800;
+      font-size:.8rem;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:1.1fr .9fr .9fr;
+      gap:18px;
+    }
+
+    .gallery-card{
+      height:280px;
+      border-radius:24px;
+      overflow:hidden;
+      position:relative;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:opacity .45s ease, transform .6s ease;
+      opacity:1;
+    }
+
+    .gallery-card:hover img{transform:scale(1.04)}
+    .gallery-card .label{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(6,13,24,.65);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(12px);
+      font-size:.92rem;
+      z-index:2;
+    }
+
+    .notice-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .notice{
+      padding:22px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+    .notice h4{margin:0 0 10px; font-size:1.1rem}
+    .notice p{margin:0; color:var(--muted); line-height:1.7}
+    .special{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      margin-top:14px;
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.16);
+      color:rgba(238,244,255,.9);
+      background:rgba(255,255,255,.03);
+    }
+    .special strong{font-size:1rem}
+    .special span{color:var(--muted); font-size:.92rem}
+
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+    .review{
+      padding:22px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+    .review-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .review-name{
+      font-weight:700;
+      font-size:1rem;
+    }
+    .stars{
+      color:#ffd56a;
+      letter-spacing:1px;
+      font-size:.95rem;
+      white-space:nowrap;
+    }
+    .review p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+
+    }
+    .review small{
+      display:block;
+      margin-top:14px;
+      color:rgba(238,244,255,.56);
+    }
+
+    .hours{
+      display:grid;
+      grid-template-columns:1fr .95fr;
+      gap:18px;
+    }
+    .hours-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .row strong{font-weight:600}
+    .row span{color:var(--muted)}
+
+    .contact-grid{display:grid; gap:12px;}
+    .contact-chip{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .contact-chip small{color:var(--muted); display:block; margin-bottom:4px}
+    .contact-chip strong{font-size:1rem}
+
+    .inline-link{
+      color:var(--accent2);
+      text-decoration:underline;
+      text-underline-offset:3px;
+      white-space:nowrap;
+      font-weight:600;
+    }
+
+    .mapbox{
+      min-height:100%;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), radial-gradient(circle at 20% 20%, rgba(83,183,255,.16), transparent 30%);
+      position:relative;
+      padding:24px;
+    }
+    .map-pin{
+      width:64px;
+      height:64px;
+      border-radius:50% 50% 50% 0;
+      background:linear-gradient(135deg, var(--accent2), var(--accent));
+      transform:rotate(-45deg);
+      position:absolute;
+      top:28px;
+      right:28px;
+      box-shadow:0 18px 30px rgba(83,183,255,.18);
+      display:grid;
+      place-items:center;
+      color:#04111f;
+      font-weight:800;
+      font-size:1.2rem;
+    }
+    .map-pin span{transform:rotate(45deg)}
+    .mapbox h4{margin:0 0 10px; font-size:1.25rem}
+    .mapbox p{margin:0;color:var(--muted);line-height:1.75;max-width:42ch;}
+
+    .faq{
+      display:grid;
+      gap:12px;
+    }
+    .faq-item{
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      overflow:hidden;
+    }
+    .faq-q{
+      width:100%;
+      text-align:left;
+      background:transparent;
+      color:var(--text);
+      border:0;
+      padding:18px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .faq-a{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+      border-top:1px solid transparent;
+    }
+    .faq-a p{
+      margin:0;
+      padding:0 18px 18px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+    .faq-item.open .faq-a{
+      max-height:180px;
+      border-top-color:rgba(255,255,255,.08);
+    }
+    .chev{transition:transform .25s ease}
+    .faq-item.open .chev{transform:rotate(180deg)}
+
+    .footer{
+      padding:32px 0 92px;
+      color:rgba(238,244,255,.70);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .sticky-bar{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      z-index:59;
+      display:flex;
+      gap:10px;
+      padding:10px;
+      border-radius:999px;
+      background:rgba(6,13,24,.55);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
+    }
+    .sticky-bar a{
+      padding:10px 14px;
+      border-radius:999px;
+      color:var(--text);
+      font-weight:700;
+      font-size:.92rem;
+      white-space:nowrap;
+    }
+    .sticky-bar .primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#06111f;
+    }
+    .sticky-bar .ghost{
+      background:rgba(255,255,255,.07);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0px)}
+      50%{transform:translateY(-12px)}
+    }
+    @keyframes gentle{
+      0%,100%{transform:translateY(0px) rotate(0deg)}
+      50%{transform:translateY(-10px) rotate(-1deg)}
+    }
+    @keyframes scroll{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    @media (max-width: 1080px){
+      .notice-grid,.reviews-grid,.gallery{
+        grid-template-columns:1fr 1fr;
+      }
+      .notice-grid .notice:first-child,
+      .reviews-grid .review:first-child,
+      .gallery-card:first-child{
+        grid-column:1 / -1;
+      }
+    }
+
+    @media (max-width: 960px){
+      .hero-grid,.grid-3,.spotlight,.hours{
+        grid-template-columns:1fr;
+      }
+      .hero{padding-top:52px}
+      .hero-card{min-height:430px}
+    }
+
+    @media (max-width: 760px){
+      .menu-toggle{display:inline-flex;}
+      .nav{
+        display:none;
+        width:100%;
+        justify-content:flex-start;
+        padding:8px 0 2px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav.open{display:flex;}
+      .nav a{
+        width:100%;
+        padding:12px 14px;
+        background:rgba(255,255,255,.04);
+      }
+      .topbar-inner{
+        padding:14px 0 12px;
+      }
+      .hero h2{max-width:12ch}
+      .hero-card{min-height:390px}
+      .floating-stat{display:none}
+      .gallery,.notice-grid,.reviews-grid{
+        grid-template-columns:1fr;
+      }
+      .gallery-card:first-child,
+      .notice-grid .notice:first-child,
+      .reviews-grid .review:first-child{
+        grid-column:auto;
+      }
+      .gallery-card{height:240px;}
+    }
+
+    @media (max-width: 520px){
+      .container{width:min(var(--max), calc(100% - 22px));}
+      section{padding:62px 0}
+      .hero{padding:34px 0 22px}
+      .hero-actions{gap:10px}
+      .btn{width:100%}
+      .hero-overlay{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .contact-chip{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .mapbox{padding:20px}
+      .map-pin{width:56px;height:56px; top:18px; right:18px;}
+      .gallery-card{height:220px;}
+      .sticky-bar{
+        left:16px;
+        right:16px;
+        transform:none;
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ButcherShop",
+    "name": "SWA Meat & Fish Market",
+    "telephone": "+44 7852 333142",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3 East Street",
+      "addressLocality": "Barking",
+      "addressRegion": "Greater London",
+      "postalCode": "IG11 8ER",
+      "addressCountry": "GB"
+    },
+    "openingHours": [
+      "Mo-Sa 08:00-20:00",
+      "Su 08:30-19:00"
+    ],
+    "areaServed": "Barking"
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🛒</div>
+        <div>
+          <h1>SWA Meat & Fish Market</h1>
+          <p>Fresh meat and frozen fish in Barking</p>
+        </div>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        Menu
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#ordering">Order</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="products.html">Products</a>
+         <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow"><span class="dot"></span> Barking local shop for everyday meat shopping</div>
+        <h2>Fresh meat and frozen fish at <span>SWA Meat & Fish Market</span></h2>
+        <p>
+          We serve the Barking community with fresh meat, frozen fish, custom cuts, bulk orders, and local collection.
+          Visit us in store or check the opening hours before you come.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:07852333142">Call Now</a>
+          <a class="btn btn-secondary" href="https://wa.me/447852333142" target="_blank" rel="noopener">WhatsApp Order</a>
+          <a class="btn btn-secondary" href="#hours">View Hours</a>
+          <a class="btn btn-dark" href="reviews.html">Reviews</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <div class="product-window">
+          <div class="window-top">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+           
+            <div id="shop-status" class="shop-status" aria-live="polite">
+              <span id="status-dot" class="status-dot"></span>
+              <span id="status-text">Checking...</span>
+            </div>
+          </div>
+
+          <div class="hero-illustration" aria-hidden="true">
+            <img src="logo.png?auto=format&fit=crop&w=1400&q=80" alt="Fresh food counter" />
+          </div>
+
+          <div class="hero-overlay">
+            <div>
+              <strong>Fresh meat and frozen fish</strong>
+              <span>Prepared for everyday shopping</span>
+            </div>
+            <div style="text-align:left">
+              <strong>Phone</strong>
+              <span>07852 333142</span>
+            </div>
+          </div>
+
+         
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span><b>Fresh Meat</b> · Frozen Fish · Custom Cuts · Bulk Orders ·</span>
+        <span><b>Local Service</b> · Barking Shop · Phone Orders ·</span>
+        <span><b>Fresh Meat</b> · Frozen Fish · Custom Cuts · Bulk Orders ·</span>
+        <span><b>Local Service</b> · Barking Shop · Phone Orders ·</span>
+      </div>
+    </div>
+  </header>
+
+
+  <section id="ordering">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h3>Restaurant & bulk orders</h3>
+        <p>Simple steps for restaurants and larger customers to place orders quickly.</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <article class="card reveal">
+        <div class="card-icon">1</div>
+        <h4>Contact us</h4>
+        <p>Call or WhatsApp us with the items you need and the quantity.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">2</div>
+        <h4>Confirm details</h4>
+        <p>We confirm stock, price, preparation, and collection or delivery time.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon">3</div>
+        <h4>Collect or receive</h4>
+        <p>Collect from the shop or arrange delivery if available for your order.</p>
+      </article>
+    </div>
+  </div>
+</section>
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>About the shop</h3>
+            <p>SWA Meat & Fish Market is a local Barking shop for customers who want a simple, reliable place to buy meat and frozen fish.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon">🥩</div>
+            <h4>Fresh meat for daily cooking</h4>
+            <p>Choose from everyday cuts and ask for preparation that suits your meal plans.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">❄️</div>
+            <h4>Frozen fish selection</h4>
+            <p>We stock frozen fish for customers who want seafood ready for later cooking.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon">📍</div>
+            <h4>Easy to find in Barking</h4>
+            <p>Visit us on East Street for quick shopping, local service, and convenient collection.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container spotlight">
+        <div class="highlight reveal">
+          <h4>What we sell</h4>
+          <p>Clear shop content that tells customers exactly what they can buy when they visit.</p>
+          <ul class="bullet-list">
+            <li><span class="check">✓</span> Fresh meat for home cooking</li>
+            <li><span class="check">✓</span> Frozen fish for family meals</li>
+            <li><span class="check">✓</span> Custom cuts on request</li>
+            <li><span class="check">✓</span> Bulk orders for larger households and events</li>
+          </ul>
+        </div>
+
+        <div class="highlight reveal">
+          <h4>Why customers come back</h4>
+          <p>We keep the page focused on practical reasons people choose a local butcher and fish shop.</p>
+          <ul class="bullet-list">
+            <li><span class="check">✓</span> Friendly counter service</li>
+            <li><span class="check">✓</span> Quick in-store ordering</li>
+            <li><span class="check">✓</span> Clean, straightforward shopping experience</li>
+            <li><span class="check">✓</span> Local shop convenience for Barking residents</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Shop gallery</h3>
+            <p>The gallery uses high-quality images now, and each card can cycle through more images automatically.</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-card reveal" data-slides="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=80|https://images.unsplash.com/photo-1544510802-0c3f43a0f8b7?auto=format&fit=crop&w=1400&q=80|https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=80">
+            <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1400&q=80" alt="Meat counter display" />
+            <div class="label">Meat counter</div>
+          </div>
+
+          <div class="gallery-card reveal" data-slides="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1000&q=80|https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80|https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=80">
+            <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1000&q=80" alt="Shop counter display" />
+            <div class="label">Storefront style</div>
+          </div>
+
+          <div class="gallery-card reveal" data-slides="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=1000&q=80|https://images.unsplash.com/photo-1517869212902-5564d7b2b8d0?auto=format&fit=crop&w=1000&q=80|https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80">
+            <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=1000&q=80" alt="Frozen fish display" />
+            <div class="label">Frozen fish</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="specials">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Popular choices in store</h3>
+            <p>This section is written for a real business website, with simple content that matches how people actually shop.</p>
+          </div>
+        </div>
+
+        <div class="notice-grid">
+          <article class="notice reveal">
+            <h4>Everyday meat cuts</h4>
+            <p>Ideal for family meals, home cooking, and regular weekly shopping. Ask in store for the cuts you need.</p>
+            <div class="special"><strong>Available in store</strong><span>Fresh selection</span></div>
+          </article>
+
+          <article class="notice reveal">
+            <h4>Frozen fish selection</h4>
+            <p>Frozen fish is available for customers who want to keep seafood ready for later cooking.</p>
+            <div class="special"><strong>Available in store</strong><span>Frozen only</span></div>
+          </article>
+
+          <article class="notice reveal">
+            <h4>Bulk orders</h4>
+            <p>Large household orders and event requests can be prepared in advance. Call ahead for details.</p>
+            <div class="special"><strong>Call ahead</strong><span>For larger orders</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+
+    
+   
+
+
+  
+
+  <!-- ================= OUR CUSTOMERS SECTION ================= -->
+<section class="customers-section">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <h3>Trusted by Local Restaurants</h3>
+        <p>
+          We proudly supply fresh meat and fish to many restaurants. Click any name to see their review and video.
+        </p>
+      </div>
+    </div>
+
+    <div class="customers-grid">
+
+      <div class="customer-card reveal" onclick="openReview('Julienest Gardens')">Julienest Gardens</div>
+      <div class="customer-card reveal" onclick="openReview('Kenny\'s Menu')">Kenny's Menu</div>
+      <div class="customer-card reveal" onclick="openReview('Aunty Mary')">Aunty Mary</div>
+      <div class="customer-card reveal" onclick="openReview('Mr P')">Mr P</div>
+      <div class="customer-card reveal" onclick="openReview('Kings')">Kings</div>
+      <div class="customer-card reveal" onclick="openReview('Michale')">Michale</div>
+      <div class="customer-card reveal" onclick="openReview('Aunty Masso')">Aunty Masso</div>
+      <div class="customer-card reveal" onclick="openReview('Aunty Roos')">Aunty Roos</div>
+      <div class="customer-card reveal" onclick="openReview('Nalli Grill')">Nalli Grill</div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= POPUP ================= -->
+<div id="reviewPopup" class="popup-overlay">
+  <div class="popup-box">
+
+    <button class="popup-close" onclick="closePopup()">✕</button>
+
+    <h3 id="popupTitle"></h3>
+    <div id="popupStars" class="popup-stars"></div>
+    <p id="popupReview" class="popup-text"></p>
+
+    <div class="popup-video">
+      <iframe id="popupVideo" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= STYLES ================= -->
+<style>
+.customers-section{
+  padding:40px 0 70px;
+}
+
+.customers-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+  margin-top:18px;
+}
+
+.customer-card{
+  padding:20px;
+  border-radius:22px;
+  text-align:center;
+  font-weight:600;
+
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.customer-card:hover{
+  transform:translateY(-4px) scale(1.02);
+  background:linear-gradient(135deg, rgba(124,219,154,.18), rgba(83,183,255,.18));
+  border-color:rgba(124,219,154,.35);
+}
+
+/* POPUP */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  opacity:0;
+  visibility:hidden;
+  transition:.3s ease;
+}
+
+.popup-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.popup-box{
+  width:min(600px, 90%);
+  border-radius:26px;
+  padding:26px;
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  position:relative;
+}
+
+.popup-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  border:none;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.popup-stars{
+  color:#ffd56a;
+  margin-bottom:10px;
+}
+
+.popup-text{
+  color:rgba(238,244,255,.75);
+  line-height:1.6;
+  margin-bottom:16px;
+}
+
+.popup-video iframe{
+  width:100%;
+  height:260px;
+  border-radius:16px;
+}
+
+/* RESPONSIVE */
+@media (max-width:960px){
+  .customers-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width:600px){
+  .customers-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+const restaurantData = {
+  "Julienest Gardens": {
+  rating: 5,
+  review: "Excellent quality meat and always fresh. Highly reliable supplier.",
+  video: "https://www.youtube.com/embed/inKquCiY2bU"
+},
+  "Kenny's Menu": {
+    rating: 4,
+    review: "Consistent quality and on-time delivery.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Aunty Mary": {
+    rating: 5,
+    review: "Best supplier we’ve worked with.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Mr P": {
+    rating: 4,
+    review: "Fresh stock and good pricing.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Kings": {
+    rating: 5,
+    review: "Top quality service and meat.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Michale": {
+    rating: 4,
+    review: "Reliable supply every time.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Aunty Masso": {
+    rating: 5,
+    review: "Always fresh and clean cuts.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Aunty Roos": {
+    rating: 4,
+    review: "Affordable and dependable.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  "Nalli Grill": {
+    rating: 5,
+    review: "Premium quality meat supply.",
+    video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  }
+};
+
+function openReview(name){
+  const data = restaurantData[name];
+
+  document.getElementById("popupTitle").innerText = name;
+  document.getElementById("popupReview").innerText = data.review;
+
+  document.getElementById("popupStars").innerText =
+    "★".repeat(data.rating) + "☆".repeat(5 - data.rating);
+
+  // 👉 AUTOPLAY ADDED HERE
+  document.getElementById("popupVideo").src = data.video + "?autoplay=1&mute=0";
+
+  document.getElementById("reviewPopup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("reviewPopup").classList.remove("active");
+  document.getElementById("popupVideo").src = "";
+}
+
+document.getElementById("reviewPopup").addEventListener("click", function(e){
+  if(e.target === this){
+    closePopup();
+  }
+});
+</script>
+
+
+<section id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Customer reviews</h3>
+            <p>This section is ready for your real Google reviews later, but it already looks complete on the page.</p>
+          </div>
+          <a class="btn btn-primary" href="reviews.html">See or add reviews</a>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review reveal">
+            <div class="review-top">
+              <div class="review-name">A. Khan, Barking</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>Clean shop, quick service, and the meat is always prepared the way I ask. Very easy to buy from here.</p>
+            <small>Customer review</small>
+          </article>
+
+          <article class="review reveal">
+            <div class="review-top">
+              <div class="review-name">S. Patel, East Ham</div>
+              <div class="stars">★★★★★</div>
+            </div>
+            <p>The staff are helpful, and the frozen fish is convenient for family meals. Good local shop to have nearby.</p>
+            <small>Customer review</small>
+          </article>
+
+          <article class="review reveal">
+            <div class="review-top">
+              <div class="review-name">M. Hussain, Barking</div>
+              <div class="stars">★★★★☆</div>
+            </div>
+            <p>I like that I can call before I visit. It saves time and makes larger shopping trips much easier.</p>
+            <small>Customer review</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<section class="quality-section" id="quality">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h3>Quality & Hygiene</h3>
+        <p>
+          We keep our shop clean, organised, and focused on fresh products so customers can shop with confidence every day.
+        </p>
+      </div>
+    </div>
+
+    <div class="quality-grid">
+      <div class="quality-card reveal">
+        <div class="quality-icon">🧼</div>
+        <h4>Clean working area</h4>
+        <p>
+          Our counters and preparation areas are kept tidy to maintain a professional and hygienic shopping environment.
+        </p>
+      </div>
+
+      <div class="quality-card reveal">
+        <div class="quality-icon">❄️</div>
+        <h4>Fresh storage</h4>
+        <p>
+          Meat and fish are stored carefully to help preserve freshness and maintain product quality for customers.
+        </p>
+      </div>
+
+      <div class="quality-card reveal">
+        <div class="quality-icon">🥩</div>
+        <h4>Careful handling</h4>
+        <p>
+          We handle all products with care so customers receive fresh, well-prepared items for home cooking or restaurant use.
+        </p>
+      </div>
+
+      <div class="quality-card reveal">
+        <div class="quality-icon">✅</div>
+        <h4>Trusted standards</h4>
+        <p>
+          With 20 years of service, we continue to focus on quality, reliability, and customer trust in every order.
+        </p>
+      </div>
+    </div>
+
+    <div class="quality-banner reveal">
+      <div>
+        <strong>Our promise</strong>
+        <p>
+          Fresh products, clean handling, and dependable service for families and restaurants.
+        </p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quality-section{
+    padding:40px 0 74px;
+  }
+
+  .quality-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+    margin-top:18px;
+  }
+
+  .quality-card{
+    padding:22px;
+    border-radius:24px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    backdrop-filter:blur(16px);
+    transition:.25s ease;
+  }
+
+  .quality-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(124,219,154,.25);
+    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  }
+
+  .quality-icon{
+    width:54px;
+    height:54px;
+    display:grid;
+    place-items:center;
+    border-radius:18px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    font-size:1.35rem;
+    margin-bottom:14px;
+  }
+
+  .quality-card h4{
+    margin:0 0 10px;
+    font-size:1.12rem;
+  }
+
+  .quality-card p{
+    margin:0;
+    color:rgba(238,244,255,.72);
+    line-height:1.75;
+  }
+
+  .quality-banner{
+    margin-top:18px;
+    padding:22px;
+    border-radius:24px;
+    border:1px solid rgba(124,219,154,.22);
+    background:linear-gradient(135deg, rgba(124,219,154,.12), rgba(83,183,255,.08)), rgba(255,255,255,.05);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .quality-banner strong{
+    display:block;
+    font-size:1.15rem;
+    margin-bottom:6px;
+  }
+
+  .quality-banner p{
+    margin:0;
+    color:rgba(238,244,255,.72);
+    line-height:1.7;
+  }
+
+  @media (max-width: 760px){
+    .quality-grid{
+      grid-template-columns:1fr;
+    }
+
+    .quality-banner{
+      flex-direction:column;
+      align-items:flex-start;
+    }
+
+    .quality-banner .btn{
+      width:100%;
+    }
+  }
+</style>
+
+<section id="delivery">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h3>Delivery and collection</h3>
+        <p>Clear information for restaurants and customers before they place an order.</p>
+      </div>
+    </div>
+
+    <div class="spotlight">
+      <div class="highlight reveal">
+        <h4>Delivery information</h4>
+        <p>
+          We offer delivery for bulk and restaurant orders in Barking and nearby areas.
+          Contact us to confirm availability and minimum order requirements.
+        </p>
+      </div>
+
+      <div class="highlight reveal">
+        <h4>Best time to order</h4>
+        <p>
+          For same-day orders, contact us early in the day. Larger restaurant orders should be placed in advance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="hours">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Hours and contact</h3>
+            <p>The address and hours are shown clearly so customers can check before they travel.</p>
+          </div>
+        </div>
+
+        <div class="hours">
+          <div class="card reveal">
+            <h4 style="margin:0 0 8px; font-size:1.25rem;">Opening hours</h4>
+            <p style="margin:0; color:var(--muted); line-height:1.75;">
+              Open daily for customers in Barking and nearby areas.
+            </p>
+
+            <div class="hours-list">
+              <div class="row"><strong>Monday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Tuesday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Wednesday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Thursday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Friday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Saturday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Sunday</strong><span>08:30 – 19:00</span></div>
+            </div>
+          </div>
+
+          <div class="mapbox reveal" id="contact">
+            <div class="map-pin"><span>📍</span></div>
+            <h4>Visit the shop</h4>
+            <p>
+              3 East Street, Barking, Greater London, IG11 8ER.
+              Call <a class="inline-link" href="tel:07852333142">07852 333142</a>.
+              Messages on WhatsApp use the same number.
+            </p>
+
+            <div class="highlight" style="margin-top:18px;">
+  <h4>For restaurant orders</h4>
+  <p>Please send items, quantity, and whether you want collection or delivery.</p>
+</div>
+
+            <div class="contact-grid" style="margin-top:22px;">
+              <div class="contact-chip">
+                <div>
+                  <small>Address</small>
+                  <strong>3 East Street, Barking, IG11 8ER</strong>
+                </div>
+              </div>
+
+              <div class="contact-chip">
+                <div>
+                  <small>Phone</small>
+                  <strong><a class="inline-link" href="tel:07852333142">07852 333142</a></strong>
+                </div>
+              </div>
+
+              <div class="contact-chip">
+                <div>
+                  <small>Directions</small>
+                  <strong><a class="inline-link" target="_blank" rel="noopener" href="https://www.google.com/maps?q=3+East+Street,+Barking,+IG11+8ER">Open in Google Maps</a></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+<section id="team" class="container">
+  <div class="section-head reveal">
+    <div>
+      <h3>Meet Our <span>Team</span></h3>
+      <p>The professionals ensuring the highest quality standards at SWA Market.</p>
+    </div>
+  </div>
+
+  <div class="team-marquee-container reveal">
+    <div class="team-track">
+      <div class="team-card" data-name="John Doe" data-role="Master Butcher" data-img="B7B5E834-96DC-4807-A996-83942EFCE1E6.JPG" data-story="John has spent over 18 years perfecting the art of butchery. He believes every cut should be prepared with precision, care, and respect for quality. At SWA Market, he ensures customers always receive the freshest and best-prepared meat.">
+        <div class="team-photo"><img src="B7B5E834-96DC-4807-A996-83942EFCE1E6.JPG" alt="John Doe"></div>
+        <h4>John Doe</h4>
+        <span>Master Butcher</span>
+      </div>
+
+      <div class="team-card" data-name="Mike Smith" data-role="Fish Specialist" data-img="path-to-photo2.jpg" data-story="Mike brings expert knowledge of seafood selection, handling, and freshness. He carefully checks every batch so customers always get top-quality fish with the best taste and texture.">
+        <div class="team-photo"><img src="path-to-photo2.jpg" alt="Mike Smith"></div>
+        <h4>Mike Smith</h4>
+        <span>Fish Specialist</span>
+      </div>
+
+      <div class="team-card" data-name="Sarah Connor" data-role="Store Manager" data-img="path-to-photo3.jpg" data-story="Sarah keeps the store running smoothly every day. From customer service to stock management, she makes sure the whole team works together to deliver a great shopping experience.">
+        <div class="team-photo"><img src="path-to-photo3.jpg" alt="Sarah Connor"></div>
+        <h4>Sarah Connor</h4>
+        <span>Store Manager</span>
+      </div>
+
+      <div class="team-card" data-name="David Wilson" data-role="Logistics Lead" data-img="path-to-photo4.jpg" data-story="David handles logistics with precision and responsibility. He makes sure deliveries arrive on time and that products are always well-organized, fresh, and ready for customers.">
+        <div class="team-photo"><img src="path-to-photo4.jpg" alt="David Wilson"></div>
+        <h4>David Wilson</h4>
+        <span>Logistics Lead</span>
+      </div>
+
+      <div class="team-card" data-name="John Doe" data-role="Master Butcher" data-img="B7B5E834-96DC-4807-A996-83942EFCE1E6.JPG" data-story="John has spent over 18 years perfecting the art of butchery. He believes every cut should be prepared with precision, care, and respect for quality. At SWA Market, he ensures customers always receive the freshest and best-prepared meat.">
+        <div class="team-photo"><img src="B7B5E834-96DC-4807-A996-83942EFCE1E6.JPG" alt="John Doe"></div>
+        <h4>John Doe</h4>
+        <span>Master Butcher</span>
+      </div>
+
+      <div class="team-card" data-name="Mike Smith" data-role="Fish Specialist" data-img="path-to-photo2.jpg" data-story="Mike brings expert knowledge of seafood selection, handling, and freshness. He carefully checks every batch so customers always get top-quality fish with the best taste and texture.">
+        <div class="team-photo"><img src="path-to-photo2.jpg" alt="Mike Smith"></div>
+        <h4>Mike Smith</h4>
+        <span>Fish Specialist</span>
+      </div>
+
+      <div class="team-card" data-name="Sarah Connor" data-role="Store Manager" data-img="path-to-photo3.jpg" data-story="Sarah keeps the store running smoothly every day. From customer service to stock management, she makes sure the whole team works together to deliver a great shopping experience.">
+        <div class="team-photo"><img src="path-to-photo3.jpg" alt="Sarah Connor"></div>
+        <h4>Sarah Connor</h4>
+        <span>Store Manager</span>
+      </div>
+
+      <div class="team-card" data-name="David Wilson" data-role="Logistics Lead" data-img="path-to-photo4.jpg" data-story="David handles logistics with precision and responsibility. He makes sure deliveries arrive on time and that products are always well-organized, fresh, and ready for customers.">
+        <div class="team-photo"><img src="path-to-photo4.jpg" alt="David Wilson"></div>
+        <h4>David Wilson</h4>
+        <span>Logistics Lead</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="team-overlay" id="teamOverlay" aria-hidden="true">
+  <div class="team-overlay-backdrop"></div>
+
+  <div class="team-popup" role="dialog" aria-modal="true" aria-labelledby="popupName">
+    <button class="team-close" id="teamClose" aria-label="Close team member profile">&times;</button>
+
+    <div class="team-popup-header">
+      <div class="team-popup-photo">
+        <img id="popupImg" src="" alt="">
+      </div>
+      <div class="team-popup-info">
+        <h2 id="popupName"></h2>
+        <p id="popupRole"></p>
+      </div>
+    </div>
+
+    <div class="team-popup-story">
+      <h4>Dedication Story</h4>
+      <p id="popupStory"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+.team-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 40px;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.team-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: teamScroll 30s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.team-marquee-container:hover .team-track {
+  animation-play-state: paused;
+}
+
+.team-card {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.team-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  border: 2px solid var(--accent);
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.team-card:hover {
+  border-color: var(--accent);
+  transform: translate3d(0, -5px, 0);
+}
+
+.team-card h4 {
+  margin: 0 0 5px;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.team-card span {
+  display: block;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes teamScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(calc(-50% - 10px), 0, 0); }
+}
+
+/* --- Optimized Team Overlay Styles --- */
+.team-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Added backdrop-filter to the transition list and matched timing */
+  transition: 
+    opacity 0.4s ease, 
+    visibility 0s linear 0.4s, 
+    backdrop-filter 0.4s ease, 
+    -webkit-backdrop-filter 0.4s ease;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+.team-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  backdrop-filter: blur(12px); /* Slightly increased for better effect */
+  -webkit-backdrop-filter: blur(12px);
+  transition: opacity 0.4s ease, visibility 0s, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
+}
+
+.team-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* Darkened slightly for better contrast */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: opacity;
+}
+
+.team-overlay.active .team-overlay-backdrop {
+  opacity: 1;
+}
+
+.team-popup {
+  position: relative;
+  z-index: 2;
+  width: min(680px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  /* Use a smoother cubic-bezier for the "pop" effect */
+  transform: translate3d(0, 30px, 0) scale(0.95);
+  opacity: 0;
+  transition: 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.team-overlay.active .team-popup {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+}
+
+/* Ensure the closing state maintains the smooth transition */
+.team-overlay.closing .team-popup {
+  transform: translate3d(0, 20px, 0) scale(0.98);
+  opacity: 0;
+}
+
+.team-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.team-popup-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.team-popup-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-popup-info h2 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.team-popup-info p {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.team-popup-story {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.team-popup-story h4 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.team-popup-story p {
+  margin: 0;
+  color: var(--muted, #d0d0d0);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.team-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.team-close:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+body.no-scroll {
+  overflow: hidden;
+  width: 100%;
+  padding-right: var(--scrollbar-width, 0px);
+}
+
+@media (max-width: 768px) {
+  .team-popup {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  .team-popup-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-popup-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .team-popup-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-track,
+  .team-card,
+  .team-overlay,
+  .team-overlay-backdrop,
+  .team-popup,
+  .team-close {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .team-overlay {
+    opacity: 0;
+  }
+
+  .team-overlay.active {
+    opacity: 1;
+  }
+
+  .team-popup {
+    transform: none;
+    opacity: 1;
+  }
+
+  .team-overlay.active .team-overlay-backdrop {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+</style>
+
+<script>
+  const teamCards = document.querySelectorAll('.team-card');
+  const overlay = document.getElementById('teamOverlay');
+  const closeBtn = document.getElementById('teamClose');
+  const popup = document.querySelector('.team-popup');
+
+  const popupImg = document.getElementById('popupImg');
+  const popupName = document.getElementById('popupName');
+  const popupRole = document.getElementById('popupRole');
+  const popupStory = document.getElementById('popupStory');
+
+  let isClosing = false;
+  let closeTimer = null;
+  let transitionCleanup = null;
+
+  function setScrollbarWidth() {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth > 0 ? `${scrollbarWidth}px` : '0px');
+  }
+
+  function lockScroll() {
+    setScrollbarWidth();
+    document.body.classList.add('no-scroll');
+  }
+
+  function unlockScroll() {
+    document.body.classList.remove('no-scroll');
+    document.documentElement.style.removeProperty('--scrollbar-width');
+  }
+
+  function openTeamPopup(card) {
+    if (isClosing) return;
+
+    const img = card.getAttribute('data-img') || '';
+    const name = card.getAttribute('data-name') || '';
+    const role = card.getAttribute('data-role') || '';
+    const story = card.getAttribute('data-story') || '';
+
+    popupImg.src = img;
+    popupImg.alt = name;
+    popupName.textContent = name;
+    popupRole.textContent = role;
+    popupStory.textContent = story;
+
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+
+    if (transitionCleanup) {
+      popup.removeEventListener('transitionend', transitionCleanup);
+      transitionCleanup = null;
+    }
+
+    overlay.classList.remove('closing');
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    lockScroll();
+
+    requestAnimationFrame(() => {
+      popup.getBoundingClientRect();
+    });
+  }
+
+  function closeTeamPopup() {
+  if (!overlay.classList.contains('active') || isClosing) return;
+  
+  isClosing = true;
+  overlay.classList.remove('active'); // Removing active starts the CSS transition
+  overlay.classList.add('closing');
+
+  // We wait for the overlay transition (0.4s) to finish before cleaning up
+  transitionCleanup = (e) => {
+    // Only trigger if the overlay itself finished transitioning
+    if (e.target === overlay) {
+      overlay.classList.remove('closing');
+      overlay.setAttribute('aria-hidden', 'true');
+      unlockScroll();
+      isClosing = false;
+      overlay.removeEventListener('transitionend', transitionCleanup);
+    }
+  };
+
+  overlay.addEventListener('transitionend', transitionCleanup);
+  
+  // Safety timeout in case transitionend fails
+  closeTimer = setTimeout(() => {
+    if (isClosing) {
+      overlay.classList.remove('active', 'closing');
+      overlay.setAttribute('aria-hidden', 'true');
+      unlockScroll();
+      isClosing = false;
+    }
+  }, 450);
+}
+
+  teamCards.forEach(card => {
+    card.addEventListener('click', () => openTeamPopup(card));
+  });
+
+  closeBtn.addEventListener('click', closeTeamPopup);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay || e.target.classList.contains('team-overlay-backdrop')) {
+      closeTeamPopup();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeTeamPopup();
+    }
+  });
+</script>
+
+    
+     <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Frequently asked questions</h3>
+            <p>Helpful answers that reduce calls and make the site easier to use.</p>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">
+              Do you accept phone orders?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes. You can call the shop before visiting to ask about availability or to place a simple order.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">
+              Is the fish fresh or frozen?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="faq-a">
+              <p>The shop sells frozen fish. Fresh meat is available from the meat counter.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">
+              Can I ask for custom cuts?
+              <span class="chev">⌄</span>
+            </button>
+            <div class="faq-a">
+              <p>Yes. Custom cuts are available, so you can ask for the preparation you prefer when you order.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  
+<div class="container" style="margin-top:40px;">
+
+  <div style="border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.1);">
+  <iframe 
+    src="https://www.google.com/maps?q=SWA+Meat+%26+Fish+Market+Barking&output=embed"
+    width="100%" 
+    height="400" 
+    style="border:0;"
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
+
+<div style="margin-top:16px; text-align:center;">
+  <a href="https://www.google.com/search?q=swa+meat+and+fish+market+google+reviews#lrd=0x47d8a66cb84155b9:0x4ebe7a686b42d12,1"
+     target="_blank"
+     style="display:inline-block; padding:12px 18px; border-radius:999px; background:linear-gradient(135deg,#7cdb9a,#53b7ff); color:#04111f; font-weight:700;">
+     View Google Reviews
+  </a>
+</div>
+</div><br>
+
+  
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 SWA Meat & Fish Market</div>
+      <div>Fresh meat · frozen fish · Barking</div>
+    </div>
+  </footer>
+
+  <div class="sticky-bar" aria-label="Primary actions">
+    <a class="primary" href="tel:07852333142">Call Now</a>
+    <a class="ghost" href="https://wa.me/447852333142" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="ghost" href="products.html">View Products</a>
+  </div>
+
+  
+
+  <script>
+    function getLondonParts() {
+      const formatter = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        weekday: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+
+      const parts = formatter.formatToParts(new Date());
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      return {
+        weekday: map.weekday,
+        hour: parseInt(map.hour, 10),
+        minute: parseInt(map.minute, 10)
+      };
+    }
+
+    function updateShopStatus() {
+      const dot = document.getElementById('status-dot');
+      const text = document.getElementById('status-text');
+      if (!dot || !text) return;
+
+      const { weekday, hour, minute } = getLondonParts();
+      const current = hour * 60 + minute;
+
+      const isSunday = weekday === 'Sun';
+      const openMinutes = isSunday ? (8 * 60 + 30) : (8 * 60);
+      const closeMinutes = isSunday ? (19 * 60) : (20 * 60);
+
+      const pad = n => String(n).padStart(2, '0');
+      const openLabel = isSunday ? '08:30' : '08:00';
+      const closeLabel = isSunday ? '19:00' : '20:00';
+
+      if (current >= openMinutes && current < closeMinutes) {
+        dot.style.background = '#22c55e';
+        dot.style.boxShadow = '0 0 0 6px rgba(34,197,94,.12)';
+        text.textContent = `Open now · Closes ${closeLabel}`;
+        return;
+      }
+
+      dot.style.background = '#ef4444';
+      dot.style.boxShadow = '0 0 0 6px rgba(239,68,68,.12)';
+
+      if (current < openMinutes) {
+        text.textContent = `Closed · Opens ${openLabel}`;
+        return;
+      }
+
+      if (weekday === 'Sat') {
+        text.textContent = 'Closed · Opens Sun 08:30';
+        return;
+      }
+
+      if (weekday === 'Sun') {
+        text.textContent = 'Closed · Opens Mon 08:00';
+        return;
+      }
+
+      text.textContent = 'Closed · Opens tomorrow 08:00';
+    }
+
+    updateShopStatus();
+    setInterval(updateShopStatus, 60000);
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const btn = item.querySelector('.faq-q');
+      btn.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 760) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    const heroCard = document.querySelector('.hero-card');
+    if (heroCard) {
+      window.addEventListener('mousemove', (e) => {
+        if (window.innerWidth < 960) return;
+        const x = (e.clientX / window.innerWidth - 0.5) * 8;
+        const y = (e.clientY / window.innerHeight - 0.5) * 8;
+        heroCard.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      }, { passive: true });
+    }
+
+    document.querySelectorAll('.gallery-card[data-slides]').forEach((card, cardIndex) => {
+      const img = card.querySelector('img');
+      const slides = card.dataset.slides.split('|').map(s => s.trim()).filter(Boolean);
+      if (!img || slides.length < 2) return;
+
+      let index = 0;
+
+      slides.forEach(src => {
+        const preload = new Image();
+        preload.src = src;
+      });
+
+      const nextSlide = () => {
+        index = (index + 1) % slides.length;
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = slides[index];
+          img.onload = () => {
+            img.style.opacity = '1';
+          };
+        }, 240);
+      };
+
+      setTimeout(() => {
+        setInterval(nextSlide, 3500 + cardIndex * 500);
+      }, 500);
+    });
+  </script>
+</body>
+</html>

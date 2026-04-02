@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | SWA Meat & Fish Market</title>
+  <meta name="description" content="Contact SWA Meat & Fish Market in Barking for fresh meat, frozen fish, restaurant supply, bulk orders, and shop enquiries." />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06111f;
+      --bg2:#0b1730;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.12);
+      --text:#eef4ff;
+      --muted:rgba(238,244,255,.72);
+      --line:rgba(255,255,255,.14);
+      --accent:#7cdb9a;
+      --accent2:#53b7ff;
+      --accent3:#ffb86b;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --radius2:32px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(83,183,255,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(124,219,154,.16), transparent 26%),
+        radial-gradient(circle at center bottom, rgba(255,184,107,.11), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, #07101d 45%, #050a13 100%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    .container{width:min(var(--max), calc(100% - 32px)); margin-inline:auto}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(7,17,31,.58);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0;
+      position:relative;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+      flex:1 1 auto;
+    }
+
+    .logo{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(124,219,154,.20), rgba(83,183,255,.20));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+      flex:0 0 auto;
+      font-size:1.15rem;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1rem;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+
+    .menu-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      margin-left:auto;
+      transition:.25s ease;
+    }
+
+    .menu-toggle:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
+    }
+
+    .menu-icon{
+      width:18px;
+      height:12px;
+      position:relative;
+      display:inline-block;
+    }
+
+    .menu-icon span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      border-radius:999px;
+      background:currentColor;
+      transition:.25s ease;
+    }
+
+    .menu-icon span:nth-child(1){top:0}
+    .menu-icon span:nth-child(2){top:5px}
+    .menu-icon span:nth-child(3){top:10px}
+
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1){
+      top:5px;
+      transform:rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2){
+      opacity:0;
+    }
+    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3){
+      top:5px;
+      transform:rotate(-45deg);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex:1 1 auto;
+    }
+
+    .nav a{
+      padding:10px 14px;
+      border:1px solid transparent;
+      border-radius:999px;
+      color:var(--muted);
+      transition:.25s ease;
+      font-size:.92rem;
+    }
+
+    .nav a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.08);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      position:relative;
+      padding:76px 0 36px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .panel{
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:.92rem;
+    }
+
+    .dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(124,219,154,.12);
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.04;
+      letter-spacing:-.04em;
+    }
+
+    h2 span{
+      background:linear-gradient(135deg, #ffffff, #8ce5b6 50%, #76c2ff);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      margin:16px 0 0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.03rem;
+      max-width:62ch;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+      letter-spacing:.01em;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{transform:translateY(-2px) scale(1.01)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#04111f;}
+    .btn-secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); color:var(--text); backdrop-filter:blur(10px);}
+    .btn-dark{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.08); color:var(--text);}
+
+    .hero-card{
+      position:relative;
+      min-height:520px;
+      border-radius:var(--radius2);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,219,154,.22), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(83,183,255,.20), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(255,184,107,.16), transparent 25%),
+        rgba(255,255,255,.05);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+
+    .hero-card::before,
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      filter:blur(30px);
+      opacity:.8;
+      animation:float 10s ease-in-out infinite;
+    }
+
+    .hero-card::before{
+      width:220px;
+      height:220px;
+      left:-40px;
+      top:30px;
+      background:rgba(124,219,154,.18);
+    }
+
+    .hero-card::after{
+      width:240px;
+      height:240px;
+      right:-30px;
+      bottom:20px;
+      background:rgba(83,183,255,.16);
+      animation-delay:-4s;
+    }
+
+    .contact-window{
+      position:absolute;
+      inset:18px;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.06)),
+        radial-gradient(circle at top, rgba(255,255,255,.12), transparent 35%);
+      backdrop-filter:blur(18px);
+      overflow:hidden;
+    }
+
+    .window-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .window-dots{display:flex; gap:8px}
+    .window-dots span{
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:rgba(255,255,255,.32);
+    }
+
+    .window-title{
+      color:rgba(255,255,255,.78);
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .hero-illustration{
+      position:absolute;
+      inset:92px 18px 18px;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      border-radius:22px;
+    }
+
+    .hero-illustration img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:22px;
+      filter:saturate(1.05) contrast(1.02);
+      animation:gentle 6s ease-in-out infinite;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:auto 18px 18px 18px;
+      border-radius:22px;
+      background:linear-gradient(180deg, transparent, rgba(2,7,15,.72));
+      padding:22px 22px 18px;
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      align-items:end;
+      pointer-events:none;
+    }
+
+    .hero-overlay strong{display:block; font-size:1.05rem}
+    .hero-overlay span{display:block; color:rgba(238,244,255,.74); font-size:.92rem; margin-top:4px}
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .summary{
+      padding:14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .summary strong{display:block; font-size:1.1rem}
+    .summary span{display:block; margin-top:4px; color:var(--muted); font-size:.92rem}
+
+    section{padding:18px 0 74px}
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:end;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-head h3{
+      margin:0;
+      font-size:clamp(1.4rem, 2.4vw, 2.1rem);
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      margin:0;
+      max-width:60ch;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+    }
+
+    .info-card{
+      padding:20px;
+      border-radius:24px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h4{margin:0 0 8px; font-size:1.05rem}
+    .info-card p{margin:0; color:var(--muted); line-height:1.7}
+
+    .contact-links{
+      display:grid;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .contact-chip{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-chip small{
+      display:block;
+      color:rgba(238,244,255,.58);
+      margin-bottom:4px;
+    }
+
+    .contact-chip strong{
+      display:block;
+      font-size:1rem;
+      color:#fff;
+    }
+
+    .inline-link{
+      color:var(--accent2);
+      text-decoration:underline;
+      text-underline-offset:3px;
+      font-weight:600;
+    }
+
+    .hours-list{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .row strong{font-weight:600}
+    .row span{color:var(--muted)}
+
+    .mapbox{
+      min-height:100%;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03)), radial-gradient(circle at 20% 20%, rgba(83,183,255,.16), transparent 30%);
+      position:relative;
+      padding:24px;
+    }
+
+    .map-pin{
+      width:64px;
+      height:64px;
+      border-radius:50% 50% 50% 0;
+      background:linear-gradient(135deg, var(--accent2), var(--accent));
+      transform:rotate(-45deg);
+      position:absolute;
+      top:28px;
+      right:28px;
+      box-shadow:0 18px 30px rgba(83,183,255,.18);
+      display:grid;
+      place-items:center;
+      color:#04111f;
+      font-weight:800;
+      font-size:1.2rem;
+    }
+    .map-pin span{transform:rotate(45deg)}
+    .mapbox h4{margin:0 0 10px; font-size:1.25rem}
+    .mapbox p{margin:0;color:var(--muted);line-height:1.75;max-width:42ch;}
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .field label{
+      font-size:.92rem;
+      color:rgba(238,244,255,.86);
+      font-weight:600;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:14px 16px;
+      outline:none;
+      transition:.2s ease;
+    }
+
+    .field textarea{min-height:150px; resize:vertical}
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:rgba(124,219,154,.45);
+      box-shadow:0 0 0 3px rgba(124,219,154,.10);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.25s ease;
+      font-weight:700;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#04111f;}
+    .btn-secondary{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); color:var(--text)}
+    .btn-dark{background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.08); color:var(--text)}
+
+    .footer{
+      padding:28px 0 48px;
+      color:rgba(238,244,255,.68);
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%) translateY(24px);
+      opacity:0;
+      pointer-events:none;
+      z-index:1000;
+      background:rgba(6,13,24,.92);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      padding:12px 16px;
+      max-width:min(92vw, 680px);
+      transition:.28s ease;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      backdrop-filter:blur(16px);
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+    .toast .pill{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(124,219,154,.12);
+      flex:0 0 auto;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .8s ease, transform .8s ease;
+    }
+
+    .show{
+      opacity:1 !important;
+      transform:none !important;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0px)}
+      50%{transform:translateY(-12px)}
+    }
+
+    @keyframes gentle{
+      0%,100%{transform:translateY(0px) rotate(0deg)}
+      50%{transform:translateY(-10px) rotate(-1deg)}
+    }
+
+    @media (max-width: 1080px){
+      .contact-grid,.summary-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero{padding-top:52px}
+      .hero-card{min-height:430px}
+      .form-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 760px){
+      .menu-toggle{display:inline-flex;}
+      .nav{
+        display:none;
+        width:100%;
+        justify-content:flex-start;
+        padding:8px 0 2px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+      .nav.open{display:flex;}
+      .nav a{
+        width:100%;
+        padding:12px 14px;
+        background:rgba(255,255,255,.04);
+      }
+      .topbar-inner{
+        padding:14px 0 12px;
+      }
+      .contact-grid,.summary-grid{
+        grid-template-columns:1fr;
+      }
+      .contact-chip{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .row{
+        flex-direction:column;
+      }
+    }
+
+    @media (max-width: 520px){
+      .container{width:min(var(--max), calc(100% - 22px));}
+      section{padding:62px 0}
+      .hero{padding:34px 0 22px}
+      .hero-actions{gap:10px}
+      .btn{width:100%}
+      .hero-overlay{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .mapbox{padding:20px}
+      .map-pin{width:56px;height:56px; top:18px; right:18px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🛒</div>
+        <div>
+          <h1>SWA Meat & Fish Market</h1>
+          <p>Contact us in Barking</p>
+        </div>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        Menu
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="#contact-form">Message us</a>
+        <a href="#hours">Hours</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="panel reveal">
+        <div class="eyebrow"><span class="dot"></span> Call, WhatsApp, visit, or send a message</div>
+        <h2>Contact <span>SWA Meat & Fish Market</span></h2>
+        <p>
+          We are here to help with fresh meat, frozen fish, bulk orders, restaurant supply, and general shop enquiries.
+          You can call us, message us on WhatsApp, or visit the shop in Barking.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:07852333142">Call Now</a>
+          <a class="btn btn-secondary" href="https://wa.me/447852333142" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-dark" href="#contact-form">Send Message</a>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary">
+            <strong>Phone</strong>
+            <span>07852 333142</span>
+          </div>
+          <div class="summary">
+            <strong>Location</strong>
+            <span>3 East Street, Barking</span>
+          </div>
+          <div class="summary">
+            <strong>Service</strong>
+            <span>Retail + restaurant supply</span>
+          </div>
+          <div class="summary">
+            <strong>Support</strong>
+            <span>Quick replies by phone</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <div class="contact-window">
+          <div class="window-top">
+            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="window-title">Get in touch today</div>
+          </div>
+
+          <div class="hero-illustration" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=80" alt="Fresh meat shop counter" />
+          </div>
+
+          <div class="hero-overlay">
+            <div>
+              <strong>Fast help for customers and restaurants</strong>
+              <span>Fresh stock, bulk orders, and delivery support</span>
+            </div>
+            <div style="text-align:left">
+              <strong>Phone</strong>
+              <span>07852 333142</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Contact options</h3>
+            <p>Choose the fastest way to reach us.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="info-card reveal">
+            <h4>Phone</h4>
+            <p>Call us for quick enquiries, product availability, or bulk order support.</p>
+            <div class="contact-links">
+              <div class="contact-chip">
+                <div>
+                  <small>Direct call</small>
+                  <strong><a class="inline-link" href="tel:07852333142">07852 333142</a></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <h4>WhatsApp</h4>
+            <p>Message us on WhatsApp for quick updates, restaurant orders, and simple questions.</p>
+            <div class="contact-links">
+              <div class="contact-chip">
+                <div>
+                  <small>Chat on WhatsApp</small>
+                  <strong><a class="inline-link" href="https://wa.me/447852333142" target="_blank" rel="noopener">Open chat</a></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <h4>Visit the shop</h4>
+            <p>Come by in Barking for fresh meat, frozen fish, and local customer service.</p>
+            <div class="contact-links">
+              <div class="contact-chip">
+                <div>
+                  <small>Address</small>
+                  <strong>3 East Street, Barking, IG11 8ER</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Send us a message</h3>
+            <p>This form gives you two send options: WhatsApp and instant send to your database endpoint later.</p>
+          </div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="panel reveal">
+            <form id="contactForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Your name</label>
+                  <input id="name" type="text" placeholder="Enter your name" required>
+                </div>
+
+                <div class="field">
+                  <label for="phone">Phone number</label>
+                  <input id="phone" type="text" placeholder="Enter your phone number">
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="subject">Subject</label>
+                  <select id="subject" required>
+                    <option value="">Choose one</option>
+                    <option>General enquiry</option>
+                    <option>Product availability</option>
+                    <option>Bulk order</option>
+                    <option>Restaurant supply</option>
+                    <option>Delivery</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email (optional)</label>
+                  <input id="email" type="email" placeholder="Enter your email">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your message here..." required></textarea>
+              </div>
+
+              <div class="btn-row">
+                <button class="btn btn-primary" type="submit">Send on WhatsApp</button>
+                <button class="btn btn-dark" type="button" id="sendInstantBtn">Send Instantly</button>
+                <a class="btn btn-secondary" href="tel:07852333142">Call instead</a>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel reveal">
+            <h3 style="margin:0 0 8px; font-size:1.3rem;">Opening hours</h3>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              Check before visiting. We also handle restaurant supply enquiries during opening hours.
+            </p>
+
+            <div id="hours" class="hours-list">
+              <div class="row"><strong>Monday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Tuesday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Wednesday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Thursday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Friday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Saturday</strong><span>08:00 – 20:00</span></div>
+              <div class="row"><strong>Sunday</strong><span>08:30 – 19:00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h3>Find us on the map</h3>
+            <p>We are located in Barking and easy to find for local customers and restaurant deliveries.</p>
+          </div>
+        </div>
+
+        <div class="mapbox reveal">
+          <div class="map-pin"><span>📍</span></div>
+          <h4>3 East Street, Barking, IG11 8ER</h4>
+          <p>
+            Visit us for fresh meat, frozen fish, and bulk order enquiries.
+            You can also open the location in Google Maps.
+          </p>
+
+          <div style="margin-top:20px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.1);">
+            <iframe
+              src="https://www.google.com/maps?q=3+East+Street,+Barking,+IG11+8ER&output=embed"
+              width="100%"
+              height="400"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="btn-row" style="margin-top:18px;">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps?q=3+East+Street,+Barking,+IG11+8ER">Open Google Maps</a>
+            <a class="btn btn-secondary" href="products.html">View Products</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© 2026 SWA Meat & Fish Market</div>
+      <div><a href="index.html">Home</a> · <a href="about.html">About Us</a> · <a href="products.html">Products</a> · <a href="reviews.html">Reviews</a></div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span class="pill" aria-hidden="true"></span>
+    <span id="toastText">Message sent.</span>
+  </div>
+
+  <script>
+    const DATABASE_ENDPOINT = ""; // Put your backend / database endpoint here later.
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 760) {
+            nav.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    const sendInstantBtn = document.getElementById('sendInstantBtn');
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toastText');
+
+    function showToast(message) {
+      toastText.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    function getFormData() {
+      return {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        message: document.getElementById('message').value.trim()
+      };
+    }
+
+    function validateForm(data) {
+      return Boolean(data.name && data.subject && data.message);
+    }
+
+    function buildMessageText(data) {
+      return (
+        `Name: ${data.name}\n` +
+        (data.phone ? `Phone: ${data.phone}\n` : '') +
+        (data.email ? `Email: ${data.email}\n` : '') +
+        `Subject: ${data.subject}\n\n` +
+        `Message:\n${data.message}`
+      );
+    }
+
+    function saveDraftToLocalQueue(payload) {
+      const key = 'swa_contact_queue';
+      const existing = JSON.parse(localStorage.getItem(key) || '[]');
+      existing.unshift(payload);
+      localStorage.setItem(key, JSON.stringify(existing));
+    }
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = getFormData();
+      if (!validateForm(data)) {
+        showToast('Please fill in the required fields.');
+        return;
+      }
+
+      const whatsappUrl = `https://wa.me/447852333142?text=${encodeURIComponent(buildMessageText(data))}`;
+      window.open(whatsappUrl, '_blank', 'noopener');
+      showToast('Opening WhatsApp...');
+    });
+
+    sendInstantBtn.addEventListener('click', async () => {
+      const data = getFormData();
+
+      if (!validateForm(data)) {
+        showToast('Please fill in the required fields.');
+        return;
+      }
+
+      const payload = {
+        ...data,
+        createdAt: new Date().toISOString()
+      };
+
+      sendInstantBtn.disabled = true;
+      const originalText = sendInstantBtn.textContent;
+      sendInstantBtn.textContent = 'Sending...';
+
+      try {
+        if (DATABASE_ENDPOINT) {
+          const response = await fetch(DATABASE_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error(`Request failed with ${response.status}`);
+          }
+
+          showToast('Message sent successfully.');
+        } else {
+          saveDraftToLocalQueue(payload);
+          showToast('Saved in frontend queue. Connect your database endpoint to send for real.');
+        }
+
+        contactForm.reset();
+      } catch (error) {
+        console.error(error);
+        saveDraftToLocalQueue(payload);
+        showToast('Connection not set. Saved in frontend queue.');
+      } finally {
+        sendInstantBtn.disabled = false;
+        sendInstantBtn.textContent = originalText;
+      }
+    });
+  </script>
+</body>
+</html>
